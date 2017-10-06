@@ -41,6 +41,17 @@ copy_settings_file()
 
 #-------------------------- Functions --------------------------------
 
+# Run composer inside CLI and pull down
+composer_install ()
+{
+
+echo "Install drupal with composer..."
+composer global require hirak/prestissimo
+time composer create-project drupal-composer/drupal-project:8.x-dev docroot --stability dev --no-interaction
+
+
+}
+
 # Initialize local settings files
 init_settings ()
 {
@@ -69,8 +80,9 @@ site_install ()
 #-------------------------- Execution --------------------------------
 
 # Project initialization steps
-fix_permissions
-init_settings
-time site_install
+composer_install
+#fix_permissions
+#init_settings
+#time site_install
 
 #-------------------------- END: Execution --------------------------------
