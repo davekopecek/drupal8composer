@@ -46,9 +46,8 @@ composer_install ()
 {
 
 echo "Install drupal with composer..."
-composer global require hirak/prestissimo
-time composer create-project drupal-composer/drupal-project:8.x-dev docroot --stability dev --no-interaction
-
+	composer global require hirak/prestissimo
+	composer create-project drupal-composer/drupal-project:8.x-dev docroot --stability dev --no-interaction
 
 }
 
@@ -56,7 +55,9 @@ time composer create-project drupal-composer/drupal-project:8.x-dev docroot --st
 init_settings ()
 {
 	# Copy from settings templates
-	copy_settings_file "${SITEDIR_PATH}/default.settings.local.php" "${SITEDIR_PATH}/settings.local.php"
+	copy_settings_file "${PROJECT_ROOT}/.docksal/config/default.settings.local.php" "${SITEDIR_PATH}/settings.local.php"
+	# Add local settings snippet to end of settings.php
+	cat ${PROJECT_ROOT}/.docksal/config/local-settings-snippet.php >> ${SITEDIR_PATH}/settings.php
 }
 
 # Fix file/folder permissions
@@ -72,17 +73,22 @@ site_install ()
 	cd $DOCROOT_PATH
 
 	# We disable email sending here so site-install does not return an error
-	PHP_OPTIONS="-d sendmail_path=`which true`" drush site-install -y --site-name='My Drupal 8 Site'
+	PHP_OPTIONS="-d sendmail_path=`which true`" drush site-install -y --site-name='My Drupal 8 Composer Site'
+}
+
+# How log? For eva ava?
+time_it_all ()
+{
+# Project initialization steps
+composer_install
+fix_permissions
+init_settings
+site_install
 }
 
 #-------------------------- END: Functions --------------------------------
 
 #-------------------------- Execution --------------------------------
-
-# Project initialization steps
-composer_install
-#fix_permissions
-#init_settings
-#time site_install
+time time_it_all
 
 #-------------------------- END: Execution --------------------------------
