@@ -20,8 +20,8 @@ Follow [Docksal environment setup instructions](http://docksal.readthedocs.io/en
 1. Clone this repo into your Projects directory
 
     ```
-    git clone https://github.com/docksal/drupal8.git
-    cd drupal8
+    git clone git@github.com:davekopecek/drupal8composer.git
+    cd drupal8composer
     ```
 
 2. Initialize the site
