@@ -37,7 +37,7 @@ Follow [Docksal environment setup instructions](http://docksal.readthedocs.io/en
 4. Point your browser to
 
     ```
-    http://drupal8.docksal
+    http://drupal8composer.docksal
     ```
 
 When the automated install is complete the command line output will display the admin username and password.
