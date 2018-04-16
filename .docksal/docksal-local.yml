@@ -1,8 +1,8 @@
 services:
   cli:
     volumes:
-      - composer-cache:/home/docker/.composer/cache
-
+    - composer-cache:/home/docker/.composer/cache
+version: '2.1'
 volumes:
   composer-cache:
     external: true
