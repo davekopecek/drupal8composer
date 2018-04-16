@@ -1,0 +1,8 @@
+services:
+  cli:
+    volumes:
+      - composer-cache:/home/docker/.composer/cache
+
+volumes:
+  composer-cache:
+    external: true
