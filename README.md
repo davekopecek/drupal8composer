@@ -9,6 +9,8 @@ Features:
 
 ## Setup instructions
 
+TODO: Suggest / Document fork to new project repo for setting up new sites.
+
 ### Step #1: Docksal environment setup
 
 **This is a one time setup - skip this if you already have a working Docksal environment.**
